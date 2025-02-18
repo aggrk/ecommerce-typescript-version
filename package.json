@@ -1,0 +1,26 @@
+{
+  "name": "ecommerce-typescript-version",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && nodemon dist/server.js"
+  },
+  "author": "Kennedy",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@tsconfig/node18": "^18.2.4",
+    "@types/express": "^5.0.0",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^22.13.4",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.9",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
+}
