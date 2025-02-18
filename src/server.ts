@@ -1,10 +1,24 @@
-import * as http from "http";
+import { fileURLToPath } from "url";
+import path from "path";
 import dotenv from "dotenv";
+import mongoose from "mongoose";
 import app from "./app.js";
 
-dotenv.config({ path: "./confing.env" });
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+dotenv.config({ path: path.join(__dirname, "../config.env") });
 
-// const PORT = Number(process.env.PORT);
-console.log(process.env);
+const DB = process.env.DATABASE_STRING;
 
-// app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
+if (!DB) {
+  console.error("There is no database string. Exiting...");
+  process.exit(1);
+}
+
+mongoose
+  .connect(DB)
+  .then(() => console.log("Connected to mongodb successfully!"));
+
+const PORT = Number(process.env.PORT);
+
+app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
